@@ -3,6 +3,7 @@ package com.sinishaw.SpringApplication.dao;
 import com.sinishaw.SpringApplication.model.Person;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonDao {
@@ -15,4 +16,10 @@ public interface PersonDao {
     }
 
     List<Person> findEveryone();
+
+    int deletePersonById(UUID id);
+
+    Person update(UUID id, Person person);
+
+    Optional<Person> findPersonById(UUID id);
 }

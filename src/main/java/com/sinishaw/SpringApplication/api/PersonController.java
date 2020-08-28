@@ -5,7 +5,10 @@ import com.sinishaw.SpringApplication.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequestMapping("api/v1/person")
 @RestController
@@ -25,6 +28,22 @@ public class PersonController {
     @GetMapping
     public List<Person> getAllPersons(){
        return personService.getPersons();
-        
+
+    }
+
+    @PatchMapping(path = "{id}")
+    public Person update(@PathVariable("id") UUID id, @RequestBody Person person){
+        return personService.updatePerson(id, person);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public int deletePerson(@PathVariable("id") UUID id){
+        return personService.deletePerson(id);
+    }
+
+    @GetMapping(path = "/{id}")
+    public Person getPersonById(@PathVariable("id") UUID id){
+        return personService.getPersonByID(id)
+                .orElse(null);
     }
 }
