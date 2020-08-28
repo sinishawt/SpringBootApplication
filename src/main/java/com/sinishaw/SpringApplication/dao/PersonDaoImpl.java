@@ -39,9 +39,9 @@ public class PersonDaoImpl implements PersonDao {
     public Person update(UUID id, Person person) {
         return findPersonById(id)
                 .map(person1 -> {
-                    int indexOfPersonToUpdate = DB.indexOf(person);
+                    int indexOfPersonToUpdate = DB.indexOf(person1);
                     if (indexOfPersonToUpdate == 0){
-                        DB.set(indexOfPersonToUpdate, person);
+                        DB.set(indexOfPersonToUpdate, new Person(id, person.getName()));
                         return person;
                     }
                     return null;

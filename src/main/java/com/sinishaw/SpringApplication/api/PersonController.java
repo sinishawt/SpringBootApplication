@@ -26,24 +26,24 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<Person> getAllPersons(){
+    public Iterable<Person> getAllPersons(){
        return personService.getPersons();
 
     }
 
-    @PatchMapping(path = "{id}")
-    public Person update(@PathVariable("id") UUID id, @RequestBody Person person){
-        return personService.updatePerson(id, person);
-    }
-
-    @DeleteMapping(path = "/{id}")
-    public int deletePerson(@PathVariable("id") UUID id){
-        return personService.deletePerson(id);
-    }
-
-    @GetMapping(path = "/{id}")
-    public Person getPersonById(@PathVariable("id") UUID id){
-        return personService.getPersonByID(id)
-                .orElse(null);
-    }
+//    @PatchMapping(path = "{id}")
+//    public Person update(@PathVariable("id") UUID id, @RequestBody Person person){
+//        return personService.updatePerson(id, person);
+//    }
+//
+//    @DeleteMapping(path = "/{id}")
+//    public int deletePerson(@PathVariable("id") UUID id){
+//        return personService.deletePerson(id);
+//    }
+//
+//    @GetMapping(path = "/{id}")
+//    public Person getPersonById(@PathVariable("id") UUID id){
+//        return personService.getPersonByID(id)
+//                .orElse(null);
+//    }
 }
